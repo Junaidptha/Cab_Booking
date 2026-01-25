@@ -4,40 +4,44 @@ package org.Cab_Booking;
 
 
 public class Ride {
+    private int ride_id;
     private String source;
     private String destination;
     private int total_seat;
     private int available_seats;
     private double fare;
-    private User user;
+    private int user_id;
 
 
-    public Ride(String destination, String source, int total_seat, double fare, int available_seats , User user) {
-        this.destination = destination;
+    public Ride(int ride_id, String source, String destination, int total_seat, int available_seats, double fare, int user_id) {
+        this.ride_id = ride_id;
         this.source = source;
+        this.destination = destination;
         this.total_seat = total_seat;
-        this.fare = fare;
         this.available_seats = available_seats;
-        this.user = user;
+        this.fare = fare;
+        this.user_id = user_id;
     }
 
     @Override
     public String toString() {
         return "Ride{" +
-                "source='" + source + '\'' +
+                "ride_id=" + ride_id +
+                ", source='" + source + '\'' +
                 ", destination='" + destination + '\'' +
                 ", total_seat=" + total_seat +
                 ", available_seats=" + available_seats +
                 ", fare=" + fare +
+                ", user_id=" + user_id +
                 '}';
     }
 
-    public User getUser() {
-        return user;
+    public int getRide_id() {
+        return ride_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setRide_id(int ride_id) {
+        this.ride_id = ride_id;
     }
 
     public String getSource() {
@@ -78,5 +82,13 @@ public class Ride {
 
     public void setFare(double fare) {
         this.fare = fare;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

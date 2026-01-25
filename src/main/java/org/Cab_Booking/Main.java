@@ -7,13 +7,27 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        RideBookingSystem rideBookingSystem = new RideBookingSystem();
-        rideBookingSystem.createRide("delhi", "jaipur",5, 2, 300 ,new User("1",2,"3"));
-        rideBookingSystem.createRide("delhi", "jaipur",5, 0, 300,new User("2",3,"4"));
+        RideBookingSystem system = new RideBookingSystem();
 
+        // 1️⃣ Register user
+        system.register(1, "Junaid", "junaid@gmail.com", "1234");
 
+        // 2️⃣ Login user
+        boolean loggedIn = system.login(1, "1234");
+        System.out.println("Login status: " + loggedIn);
 
-        System.out.println(rideBookingSystem.showAllRide());
+        //create ride
+        system.createRide("Delhi", "Agra", 4, 4, 500, 1);
+
+//
+//        // 3️⃣ Update password
+//        system.updateUser(1, "newpass");
+//
+//        // 4️⃣ Login again with new password
+//        system.login(1, "newpass");
+//
+//        // 5️⃣ Delete account
+//        system.deleteAccount(1);
 
     }
 }

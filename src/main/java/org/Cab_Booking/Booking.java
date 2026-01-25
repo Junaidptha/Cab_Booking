@@ -2,15 +2,15 @@ package org.Cab_Booking;
 
 public class Booking {
     private int  booking_id;
-    private Ride ride;
-    private User user;
+    private int ride_id;
+    private int user_id;
     private int total_seats;
     private Double Total_fare;
 
-    public Booking(int booking_id, Ride ride, User user, int total_seats, Double total_fare) {
+    public Booking(int booking_id, int ride_id, int user_id, int total_seats, Double total_fare) {
         this.booking_id = booking_id;
-        this.ride = ride;
-        this.user = user;
+        this.ride_id = ride_id;
+        this.user_id = user_id;
         this.total_seats = total_seats;
         Total_fare = total_fare;
     }
@@ -19,8 +19,8 @@ public class Booking {
     public String toString() {
         return "Booking{" +
                 "booking_id=" + booking_id +
-                ", ride=" + ride +
-                ", user=" + user +
+                ", ride_id=" + ride_id +
+                ", user_id=" + user_id +
                 ", total_seats=" + total_seats +
                 ", Total_fare=" + Total_fare +
                 '}';
@@ -34,20 +34,20 @@ public class Booking {
         this.booking_id = booking_id;
     }
 
-    public Ride getRide() {
-        return ride;
+    public int getRide_id() {
+        return ride_id;
     }
 
-    public void setRide(Ride ride) {
-        this.ride = ride;
+    public void setRide_id(int ride_id) {
+        this.ride_id = ride_id;
     }
 
-    public User getUser() {
-        return user;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public int getTotal_seats() {
