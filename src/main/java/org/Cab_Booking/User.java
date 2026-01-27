@@ -2,12 +2,14 @@ package org.Cab_Booking;
 
 public class User {
     private int user_id;
-    private String userEmail;
+    private String name;
+    private String email;
     private String password;
 
-    public User(String userEmail, int user_id, String password) {
-        this.userEmail = userEmail;
+    public User(int user_id, String name, String email, String password) {
         this.user_id = user_id;
+        this.name = name;
+        this.email = email;
         this.password = password;
     }
 
@@ -19,12 +21,20 @@ public class User {
         this.user_id = user_id;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getName() {
+        return name;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

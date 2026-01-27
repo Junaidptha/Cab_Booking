@@ -12,6 +12,7 @@ public class Main {
         // 1️⃣ Register user
         system.register(1, "Junaid", "junaid@gmail.com", "1234");
 
+
         // 2️⃣ Login user
         boolean loggedIn = system.login(1, "1234");
         System.out.println("Login status: " + loggedIn);
