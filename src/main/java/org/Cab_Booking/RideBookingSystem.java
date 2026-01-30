@@ -8,7 +8,7 @@ public class RideBookingSystem {
 
     Connection connection;
     ResultSet resultSet;
-    //    Statement statement;
+
     PreparedStatement preparedStatement;
 
     public RideBookingSystem() {
@@ -36,11 +36,14 @@ public class RideBookingSystem {
                 System.out.println("User already exists");
                 return;
             }
-            preparedStatement = connection.prepareStatement("INSERT INTO users (user_id, name, email, password) VALUES (?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO users (user_id, name, email, password, phone_number, licence_no, licence_exp) VALUES (?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setInt(1, user.getUser_id());
             preparedStatement.setString(2, user.getName());
             preparedStatement.setString(3, user.getEmail());
             preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setLong(5,user.getPhone_number());
+            preparedStatement.setString(6, user.getLicence_no());
+            preparedStatement.setString(7, user.getLicence_exp());
             preparedStatement.executeUpdate();
             System.out.println("User registered successfully");
 
@@ -49,33 +52,6 @@ public class RideBookingSystem {
         }
     }
 
-    public void register(int userId, String userName, String userEmail, String password) {
-        try {
-            preparedStatement = connection.prepareStatement(
-                    "SELECT 1 FROM users WHERE user_id = ? OR email = ?"
-            );
-            preparedStatement.setInt(1, userId);
-            preparedStatement.setString(2, userEmail);
-
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                System.out.println("User already exists");
-                return;
-            }
-
-            preparedStatement = connection.prepareStatement("INSERT INTO users (user_id, name, email, password) VALUES (?, ?, ?, ?)");
-            preparedStatement.setInt(1, userId);
-            preparedStatement.setString(2, userName);
-            preparedStatement.setString(3, userEmail);
-            preparedStatement.setString(4, password);
-            preparedStatement.executeUpdate();
-            System.out.println("User registered successfully");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public boolean login(int userId, String password) {
         try {
@@ -97,11 +73,11 @@ public class RideBookingSystem {
     }
 
 
-    public void updateUser(int userId, String password) {
+    public void updateUser(int user_id, String password) {
         try {
             preparedStatement = connection.prepareStatement("update users SET password = ? where user_id = ?");
-            preparedStatement.setInt(1, userId);
-            preparedStatement.setString(2, password);
+            preparedStatement.setInt(2, user_id);
+            preparedStatement.setString(1, password);
 
             int row = preparedStatement.executeUpdate(); /* return type int(values are
                                                                             1	            One row updated
